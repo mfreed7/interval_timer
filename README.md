@@ -1,2 +1,2 @@
 # interval_timer
-Quick and easy interval timer
+Just as the name suggests, a quick and easy interval timer.
