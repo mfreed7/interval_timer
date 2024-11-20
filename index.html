@@ -78,7 +78,7 @@
   document.getElementById('playpause').addEventListener('click',() => {
     endTime = (new Date()).getTime() + interval.value*1000;
   })
-  setInterval(() => {
+  function update() {
     const leftMs = endTime - (new Date());
     timer.className = '';
     if (!endTime) {
@@ -97,5 +97,7 @@
         timer.className = 'warn';
       }
     }
-  },0);
+    requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
 </script>
