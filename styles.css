@@ -217,20 +217,33 @@ body {
     width: min(80%, 800px);
     aspect-ratio: 1.9/1;
     min-height: 250px;
+
+    --transition-speed: 1500ms
 }
 
 #wrapper.warn {
-    transition: box-shadow 3000ms ease-in-out, border 3000ms ease-in-out, background-color 3500ms ease-in-out;
-    border: 3px solid #d4a22d;
-    box-shadow: 0 0 50px 10px #a07130;
-    background-color: rgb(250 188 0 / 10%);
+    transition: box-shadow var(--transition-speed) ease-in-out, border var(--transition-speed) ease-in-out, background-color calc(var(--transition-speed) + 250ms) ease-in-out;
+    border: 3px solid #eaae23;
+    box-shadow: 0 0 50px 10px #b9942f;
+    background-color: rgb(250 188 0 / 15%);
 }
 
 #wrapper.ending {
-    transition: box-shadow 3000ms ease-in-out, border 3000ms ease-in-out, background-color 3500ms ease-in-out;
-    border: 3px solid #bb5252;
-    box-shadow: 0 0 50px 10px #bb5252;
+    transition: box-shadow var(--transition-speed) ease-in-out, border var(--transition-speed) ease-in-out, background-color calc(var(--transition-speed) + 250ms) ease-in-out;
+    border: 3px solid #d65353;
+    box-shadow: 0 0 50px 10px #f45151;
+    animation: flashWarn 350ms 4000ms ease-in infinite alternate;
     background-color: rgba(250, 0, 0, 0.1)
+}
+
+@keyframes flashWarn {
+    from {
+        background-color: rgba(250, 0, 0, 0.25)
+    }
+
+    to {
+        background-color: rgba(250, 0, 0, 0.1)
+    }
 }
 
 #controls {
@@ -319,6 +332,10 @@ body {
     margin-top: auto;
     margin-bottom: 20px;
     margin-left: 3px;
+}
+
+#wrapper:has(.out) {
+    animation: none;
 }
 
 #timer.out {
